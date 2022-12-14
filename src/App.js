@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: powderblue;
+    background-color: white
   }`
 
 function App() {
@@ -26,7 +26,7 @@ function App() {
     {
       id: 2,
       text: '째깍이 깨우기',
-      checked: true,
+      checked: false,
     },
     {
       id: 3,
@@ -35,8 +35,8 @@ function App() {
     },
   ]);
 
-  // submit으로 item 추가
-  const todoCreate = (text) => {
+  // submit
+  const todoCreate = text => {
     const todo = {
       id: nextId,
       text,
@@ -46,8 +46,14 @@ function App() {
     nextId++
   }
 
-  const onCheck = (id) => {
+  // checked
+  const onCheck = id => {
     setTodos(todos => todos.map(todo => (todo.id === id ? {...todo, checked: !todo.checked} : todo)))
+  }
+
+  // remove
+  const onRemove = id => {
+    setTodos(todos => todos.filter(todo => todo.id !== id))
   }
 
   return (
@@ -55,8 +61,8 @@ function App() {
       <GlobalStyle />
 
       <Template>
-        <Header todoLen={todos.length}/>
-        <List todos={todos} />
+        <Header todos={todos}/>
+        <List todos={todos} onCheck={onCheck} onRemove={onRemove} />
         <Create todoCreate={todoCreate} />
       </Template>
     </>

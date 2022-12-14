@@ -8,6 +8,7 @@ const TodoTemplate = styled.div`
   border-radius: 14px;
   display: flex;
   flex-direction: column;
+  box-shadow: 1px 2px 4px 1px black;
 `;
 
 function Template(props) {

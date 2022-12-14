@@ -6,11 +6,11 @@ const TodoList = styled.div`
     flex: 1;  // 차지하는 영역 꽉 채우기
     overflow-y: auto;
 `;
-const List = ({ todos, onCheck }) => {
+const List = ({ todos, onCheck, onRemove }) => {
     return (
         <TodoList>
             {todos.map(todo => 
-                <Item todo={todo} key={todo.id} onCheck={onCheck} />
+                <Item todo={todo} key={todo.id} onCheck={onCheck} onRemove={onRemove} />
             )}
         </TodoList>
     )

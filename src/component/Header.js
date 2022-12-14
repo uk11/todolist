@@ -18,33 +18,35 @@ const TodoHeader = styled.div`
     padding: 0px 0px 10px 20px;
   }
   .work {
-    color: #20c997;
     font-weight: bold;
     padding: 0px 0px 10px 20px;
   }
 `;
 
-function Header({ todoLen }) {
-    // 객체 - Tue Dec 13 2022 09:11:19 GMT+0900 (한국 표준시)
-    const today = new Date();
+function Header({ todos }) {
+  // 체크된거 빼기
+  const too = todos.filter(todo => !todo.checked);
+  
+  // 객체 - Tue Dec 13 2022 09:11:19 GMT+0900 (한국 표준시)
+  const today = new Date();
 
-    // 년 월 일
-    const day = today.toLocaleDateString('ko-KR', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    });
+  // 년 월 일
+  const day = today.toLocaleDateString('ko-KR', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
 
-    // 요일
-    const dayName = today.toLocaleDateString('ko-KR', { weekday: 'long' });
+  // 요일
+  const dayName = today.toLocaleDateString('ko-KR', { weekday: 'long' });
 
-    return (
-        <TodoHeader>
-            <div className='title'>TO DO LIST</div>
-            <div className='date'>{day} {dayName}</div>
-            <div className="work">남은 할 일 {todoLen}개</div> 
-        </TodoHeader>
-    );
+  return (
+    <TodoHeader>
+      <div className='title'>TO DO LIST</div>
+      <div className='date'>{day} {dayName}</div>
+      <div className="work">남은 할 일 {too.length}개</div>
+    </TodoHeader>
+  );
 }
 
 export default Header;
