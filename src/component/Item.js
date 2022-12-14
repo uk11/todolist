@@ -1,5 +1,3 @@
-// item 흰색으로 (테두리만들기)
-
 import React from "react";
 import styled from "styled-components";
 import { AiOutlineCheckSquare, AiOutlineBorder } from "react-icons/ai";
@@ -40,23 +38,21 @@ const CheckButton = styled.div`
 const Item = ({ todo, onCheck, onRemove, todoLen }) => {
     const { id, text, checked } = todo;
 
-
     const onChecked = () => {
-       onCheck(id)
+        onCheck(id)
     }
-
 
     return (
         <TodoItem>
 
             <CheckButton className={`items ${checked ? "checked" : ""}`}>
-                   {checked ? <AiOutlineCheckSquare className="check" onClick={onChecked}/> 
-                   : <AiOutlineBorder onClick={() => {onCheck(id)}}/>}
-                   <div className="text">{text}</div>
-            <AiOutlineDelete className="trash" onClick={() => {onRemove(id)}}/>
+                {checked ? <AiOutlineCheckSquare className="check" onClick={onChecked} />
+                    : <AiOutlineBorder onClick={() => { onCheck(id) }} />}
+                <div className="text">{text}</div>
+                <AiOutlineDelete className="trash" onClick={() => { onRemove(id) }} />
             </CheckButton>
         </TodoItem>
     )
 }
- 
+
 export default Item;

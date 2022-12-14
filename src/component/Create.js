@@ -24,7 +24,6 @@ const Button = styled.button`
     width: 15%;
     height: 40px;
     padding: 10px;
-    font-size: 1px;
     border: 1px solid gray;
     border-left: 0px;
     border-top-right-radius: 4px;
@@ -50,12 +49,12 @@ const Create = ({ todoCreate }) => {
     return (
         <TodoCreateForm onSubmit={onSubmit}>
         <Input 
-        placeholder="입력"
+        placeholder="Please enter your to do."
         value={value}
         type="text"
         onChange={onChange}
          />
-        <Button type="submit">추가</Button>
+        <Button type="submit">add</Button>
         </TodoCreateForm>
     )
 }
